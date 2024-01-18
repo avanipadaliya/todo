@@ -14,5 +14,5 @@
             </div>
         </div>
     </div>
-    
+    <x-notify::notify />
 </x-app-layout>

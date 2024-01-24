@@ -9,25 +9,26 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                   
-                <form method="POST" action="{{route('addtask')}}">
+                <form method="POST">
                     @csrf
+                    
                     <div>
                         <x-input-label for="taskname" :value="__('Task Name')"/>
-                        <x-text-input id="taskname" class="block mt-1 w-full" type="text" :value="old('taskname')" name="taskname" required  autocomplete="taskname"/>
+                        <x-text-input id="taskname" class="block mt-1 w-full" type="text" :value="$task['taskname']" name="taskname" required  autocomplete="taskname"/>
                         <x-input-error :messages="$errors->get('taskname')" class="m-2"/>
                     </div>
 
 
                     <div class="mt-4">
                         <x-input-label for="description" :value="__('Description')"/>
-                        <x-textarea-input id="description" class="block mt-1 w-full" rows="5" :value="old('description')" name="description" required autocomplete="description"/>
+                        <x-textarea-input id="description" class="block mt-1 w-full" rows="5" :data="$task['description']" name="description" required autocomplete="description"/>
                         <x-input-error :messages="$errors->get('description')" class="m-2"/>
 
                     </div>
 
                     <div class="mt-4">
-                        <x-primary-button class="ms-4" style='background-color:darkslategray'>
-                            {{__('Add Task')}}
+                        <x-primary-button class="ms-4">
+                            {{__('Edit Task')}}
                         </x-primary-button>
                 </form>
                 </div>

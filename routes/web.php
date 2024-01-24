@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\addTaskController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,13 @@ Route::get('/addtask',function(){
     return view('addtask');    
 })->middleware(['auth','verified'])->name('addtask');
 
-Route::post('addtask',[addTaskController::class,'store']);
+Route::post('addtask',[TaskController::class,'store']);
+Route::GET('mytasks',[TaskController::class,'show'])->name('mytasks');
+Route::GET('task/{id}',[TaskController::class,'destroy']);
+Route::GET('task/{id}/edit',[TaskController::class,'edit']);
+Route::post('task/{id}/edit',[TaskController::class,'update']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
